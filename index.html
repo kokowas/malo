@@ -13,19 +13,14 @@
         
         html, body {
             width: 100%;
+            height: 100%;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            overflow-x: hidden;
+            overflow: auto;
         }
         
         body {
             background: #0f0f0f;
             color: white;
-            padding-bottom: 50px;
-        }
-        
-        .container {
-            width: 100%;
-            min-height: 100vh;
         }
         
         /* Header Section */
@@ -35,6 +30,11 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
         
         .header::before {
@@ -254,17 +254,6 @@
             border: 1px solid rgba(255,255,255,0.2);
         }
         
-        /* Fullscreen styles */
-        .container:fullscreen,
-        .container:-webkit-full-screen,
-        .container:-moz-full-screen {
-            overflow-y: scroll !important;
-            overflow-x: hidden !important;
-            -webkit-overflow-scrolling: touch !important;
-            height: 100vh !important;
-            width: 100vw !important;
-        }
-        
         /* Scroll indicator */
         .scroll-indicator {
             position: fixed;
@@ -286,6 +275,14 @@
         .scroll-indicator.hidden {
             display: none;
         }
+
+        /* Fullscreen wrapper */
+        body:fullscreen,
+        body:-webkit-full-screen,
+        body:-moz-full-screen {
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
     </style>
 </head>
 <body>
@@ -293,121 +290,119 @@
         <div class="progress-bar" id="progressBar"></div>
     </div>
     
-    <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <div class="header-content">
-                <h1>🚀 Interactive Learning Page</h1>
-                <p class="subtitle">Scroll down to explore all the amazing content!</p>
-                <button class="fullscreen-btn" onclick="toggleFullscreen()">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
-                    </svg>
-                    Go Fullscreen
-                </button>
-            </div>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-content">
+            <h1>🚀 Interactive Learning Page</h1>
+            <p class="subtitle">Scroll down to explore all the amazing content!</p>
+            <button class="fullscreen-btn" onclick="toggleFullscreen()">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
+                </svg>
+                Go Fullscreen
+            </button>
         </div>
-        
-        <!-- Section 1 -->
-        <div class="section">
-            <div class="card">
-                <h2>📚 Welcome to Your Learning Hub</h2>
-                <p>This is a fully responsive page designed to work perfectly in the Moodle app. You can scroll through all the content smoothly, even in fullscreen mode on your mobile device.</p>
-                <p>Whether you're in portrait or landscape orientation, everything adjusts automatically to give you the best viewing experience.</p>
-                <div class="image-placeholder">🎨</div>
-            </div>
+    </div>
+    
+    <!-- Section 1 -->
+    <div class="section">
+        <div class="card">
+            <h2>📚 Welcome to Your Learning Hub</h2>
+            <p>This is a fully responsive page designed to work perfectly in the Moodle app. You can scroll through all the content smoothly, even in fullscreen mode on your mobile device.</p>
+            <p>Whether you're in portrait or landscape orientation, everything adjusts automatically to give you the best viewing experience.</p>
+            <div class="image-placeholder">🎨</div>
         </div>
-        
-        <!-- Section 2 -->
-        <div class="section">
-            <div class="card">
-                <h2>✨ Amazing Features</h2>
-                <p>Check out all these cool features that make this page special:</p>
-                
-                <div class="feature-grid">
-                    <div class="feature-item">
-                        <span class="icon">📱</span>
-                        <h3>Mobile First</h3>
-                        <p>Optimized for mobile devices and tablets</p>
-                    </div>
-                    <div class="feature-item">
-                        <span class="icon">🎯</span>
-                        <h3>Responsive</h3>
-                        <p>Adapts to any screen size automatically</p>
-                    </div>
-                    <div class="feature-item">
-                        <span class="icon">⚡</span>
-                        <h3>Fast Loading</h3>
-                        <p>Lightweight and super fast</p>
-                    </div>
-                    <div class="feature-item">
-                        <span class="icon">🎨</span>
-                        <h3>Beautiful</h3>
-                        <p>Modern gradient designs and animations</p>
-                    </div>
+    </div>
+    
+    <!-- Section 2 -->
+    <div class="section">
+        <div class="card">
+            <h2>✨ Amazing Features</h2>
+            <p>Check out all these cool features that make this page special:</p>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <span class="icon">📱</span>
+                    <h3>Mobile First</h3>
+                    <p>Optimized for mobile devices and tablets</p>
+                </div>
+                <div class="feature-item">
+                    <span class="icon">🎯</span>
+                    <h3>Responsive</h3>
+                    <p>Adapts to any screen size automatically</p>
+                </div>
+                <div class="feature-item">
+                    <span class="icon">⚡</span>
+                    <h3>Fast Loading</h3>
+                    <p>Lightweight and super fast</p>
+                </div>
+                <div class="feature-item">
+                    <span class="icon">🎨</span>
+                    <h3>Beautiful</h3>
+                    <p>Modern gradient designs and animations</p>
                 </div>
             </div>
         </div>
-        
-        <!-- Section 3 -->
-        <div class="section">
-            <div class="card">
-                <h2>🎓 Educational Content</h2>
-                <p>This section demonstrates how you can add educational content to your Moodle page. You can include text, images, videos, and interactive elements.</p>
-                <p>The smooth scrolling experience ensures that students can easily navigate through all your materials without any frustration.</p>
-                <div class="image-placeholder">📖</div>
-                <p>Keep scrolling to see more content below! There's still plenty to explore.</p>
-            </div>
+    </div>
+    
+    <!-- Section 3 -->
+    <div class="section">
+        <div class="card">
+            <h2>🎓 Educational Content</h2>
+            <p>This section demonstrates how you can add educational content to your Moodle page. You can include text, images, videos, and interactive elements.</p>
+            <p>The smooth scrolling experience ensures that students can easily navigate through all your materials without any frustration.</p>
+            <div class="image-placeholder">📖</div>
+            <p>Keep scrolling to see more content below! There's still plenty to explore.</p>
         </div>
-        
-        <!-- Section 4 -->
-        <div class="section">
-            <div class="card">
-                <h2>🌟 Interactive Elements</h2>
-                <p>This page includes various interactive elements that respond to user actions:</p>
-                <p>• Hover effects on cards (try hovering on desktop!)</p>
-                <p>• Smooth animations and transitions</p>
-                <p>• Progress bar at the top showing scroll position</p>
-                <p>• Fullscreen toggle button</p>
-                <p>• Responsive grid layouts</p>
-                <div class="image-placeholder">⚙️</div>
-            </div>
+    </div>
+    
+    <!-- Section 4 -->
+    <div class="section">
+        <div class="card">
+            <h2>🌟 Interactive Elements</h2>
+            <p>This page includes various interactive elements that respond to user actions:</p>
+            <p>• Hover effects on cards (try hovering on desktop!)</p>
+            <p>• Smooth animations and transitions</p>
+            <p>• Progress bar at the top showing scroll position</p>
+            <p>• Fullscreen toggle button</p>
+            <p>• Responsive grid layouts</p>
+            <div class="image-placeholder">⚙️</div>
         </div>
-        
-        <!-- Section 5 -->
-        <div class="section">
-            <div class="card">
-                <h2>💡 Tips for Students</h2>
-                <p><strong>On Mobile:</strong> Tap the fullscreen button for an immersive experience. You can scroll normally even in fullscreen mode.</p>
-                <p><strong>Rotating Your Device:</strong> The page adapts automatically when you switch between portrait and landscape modes.</p>
-                <p><strong>Navigation:</strong> Use your finger to scroll through content smoothly. All interactive elements are touch-friendly.</p>
-                <div class="image-placeholder">👆</div>
-            </div>
+    </div>
+    
+    <!-- Section 5 -->
+    <div class="section">
+        <div class="card">
+            <h2>💡 Tips for Students</h2>
+            <p><strong>On Mobile:</strong> Tap the fullscreen button for an immersive experience. You can scroll normally even in fullscreen mode.</p>
+            <p><strong>Rotating Your Device:</strong> The page adapts automatically when you switch between portrait and landscape modes.</p>
+            <p><strong>Navigation:</strong> Use your finger to scroll through content smoothly. All interactive elements are touch-friendly.</p>
+            <div class="image-placeholder">👆</div>
         </div>
-        
-        <!-- Section 6 -->
-        <div class="section">
-            <div class="card">
-                <h2>🎯 Learning Objectives</h2>
-                <p>By the end of this module, you will be able to:</p>
-                <p>1. Understand how responsive design works</p>
-                <p>2. Navigate through mobile-optimized content</p>
-                <p>3. Use fullscreen features effectively</p>
-                <p>4. Interact with modern web interfaces</p>
-                <p>5. Access learning materials on any device</p>
-                <div class="image-placeholder">🎯</div>
-            </div>
+    </div>
+    
+    <!-- Section 6 -->
+    <div class="section">
+        <div class="card">
+            <h2>🎯 Learning Objectives</h2>
+            <p>By the end of this module, you will be able to:</p>
+            <p>1. Understand how responsive design works</p>
+            <p>2. Navigate through mobile-optimized content</p>
+            <p>3. Use fullscreen features effectively</p>
+            <p>4. Interact with modern web interfaces</p>
+            <p>5. Access learning materials on any device</p>
+            <div class="image-placeholder">🎯</div>
         </div>
-        
-        <!-- Section 7 - Final -->
-        <div class="section">
-            <div class="card">
-                <h2>🎉 You Made It to the Bottom!</h2>
-                <p>Congratulations! You've successfully scrolled through all the content. This proves that the scrolling works perfectly in both normal and fullscreen modes.</p>
-                <p>Now try flipping your phone to landscape mode and scroll again to test it in different orientations!</p>
-                <div class="image-placeholder">🏆</div>
-                <p style="margin-top: 30px; text-align: center; font-size: 20px;">⬆️ Scroll back to top to try fullscreen mode! ⬆️</p>
-            </div>
+    </div>
+    
+    <!-- Section 7 - Final -->
+    <div class="section">
+        <div class="card">
+            <h2>🎉 You Made It to the Bottom!</h2>
+            <p>Congratulations! You've successfully scrolled through all the content. This proves that the scrolling works perfectly in both normal and fullscreen modes.</p>
+            <p>Now try flipping your phone to landscape mode and scroll again to test it in different orientations!</p>
+            <div class="image-placeholder">🏆</div>
+            <p style="margin-top: 30px; text-align: center; font-size: 20px;">⬆️ Scroll back to top to try fullscreen mode! ⬆️</p>
         </div>
     </div>
     
@@ -417,7 +412,7 @@
     <script>
         // Fullscreen functionality
         function toggleFullscreen() {
-            const container = document.querySelector('.container');
+            const elem = document.documentElement; // Use body instead of container
             const btn = document.querySelector('.fullscreen-btn');
             const status = document.getElementById('status');
             
@@ -426,14 +421,14 @@
                 !document.mozFullScreenElement) {
                 
                 // Enter fullscreen
-                if (container.requestFullscreen) {
-                    container.requestFullscreen();
-                } else if (container.webkitRequestFullscreen) {
-                    container.webkitRequestFullscreen();
-                } else if (container.mozRequestFullScreen) {
-                    container.mozRequestFullScreen();
-                } else if (container.msRequestFullscreen) {
-                    container.msRequestFullscreen();
+                if (elem.requestFullscreen) {
+                    elem.requestFullscreen();
+                } else if (elem.webkitRequestFullscreen) {
+                    elem.webkitRequestFullscreen();
+                } else if (elem.mozRequestFullScreen) {
+                    elem.mozRequestFullScreen();
+                } else if (elem.msRequestFullscreen) {
+                    elem.msRequestFullscreen();
                 }
                 
                 btn.innerHTML = `
@@ -442,7 +437,7 @@
                     </svg>
                     Exit Fullscreen
                 `;
-                status.textContent = 'Fullscreen active! Try scrolling! 🎉';
+                status.textContent = 'Fullscreen active! Scroll now! 🎉';
             } else {
                 // Exit fullscreen
                 if (document.exitFullscreen) {
@@ -477,10 +472,9 @@
         
         // Progress bar
         function updateProgressBar() {
-            const container = document.fullscreenElement || document.webkitFullscreenElement || document.querySelector('.container');
-            const scrollTop = container.scrollTop || window.pageYOffset;
-            const scrollHeight = container.scrollHeight || document.documentElement.scrollHeight;
-            const clientHeight = container.clientHeight || window.innerHeight;
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight;
+            const clientHeight = document.documentElement.clientHeight;
             const scrolled = (scrollTop / (scrollHeight - clientHeight)) * 100;
             document.getElementById('progressBar').style.width = scrolled + '%';
             
@@ -494,34 +488,12 @@
         }
         
         // Event listeners
-        document.addEventListener('fullscreenchange', function() {
-            updateButton();
-            setupScrollListener();
-        });
-        document.addEventListener('webkitfullscreenchange', function() {
-            updateButton();
-            setupScrollListener();
-        });
-        document.addEventListener('mozfullscreenchange', function() {
-            updateButton();
-            setupScrollListener();
-        });
-        document.addEventListener('MSFullscreenChange', function() {
-            updateButton();
-            setupScrollListener();
-        });
-        
-        function setupScrollListener() {
-            const container = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement;
-            if (container) {
-                container.addEventListener('scroll', updateProgressBar);
-            } else {
-                window.addEventListener('scroll', updateProgressBar);
-            }
-        }
+        document.addEventListener('fullscreenchange', updateButton);
+        document.addEventListener('webkitfullscreenchange', updateButton);
+        document.addEventListener('mozfullscreenchange', updateButton);
+        document.addEventListener('MSFullscreenChange', updateButton);
         
         window.addEventListener('scroll', updateProgressBar);
-        document.querySelector('.container').addEventListener('scroll', updateProgressBar);
         
         // Initial progress bar update
         updateProgressBar();
