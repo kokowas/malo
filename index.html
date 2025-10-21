@@ -90,53 +90,56 @@
         }
         
         .fullscreen-btn {
-            background: white;
+            background: rgba(255, 255, 255, 0.9);
             color: #667eea;
             border: none;
-            padding: 15px 30px;
+            padding: 0;
+            width: 50px;
+            height: 50px;
             font-size: 16px;
             font-weight: bold;
-            border-radius: 50px;
+            border-radius: 50%;
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             transition: all 0.3s ease;
-            display: inline-flex;
+            display: flex;
             align-items: center;
-            gap: 8px;
-            animation: fadeIn 1s ease 0.6s both;
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 10000;
+            justify-content: center;
+            position: fixed !important;
+            top: 20px !important;
+            right: 20px !important;
+            z-index: 99999 !important;
+            backdrop-filter: blur(10px);
         }
         
         .fullscreen-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.4);
+            background: rgba(255, 255, 255, 1);
         }
         
         .fullscreen-btn:active {
-            transform: translateY(0);
+            transform: scale(0.95);
         }
         
         .fullscreen-btn svg {
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
             flex-shrink: 0;
         }
         
         /* Mobile adjustments for button */
         @media (max-width: 768px) {
             .fullscreen-btn {
-                padding: 12px 20px;
-                font-size: 14px;
-                top: 15px;
-                right: 15px;
+                width: 45px;
+                height: 45px;
+                top: 15px !important;
+                right: 15px !important;
             }
             
             .fullscreen-btn svg {
-                width: 18px;
-                height: 18px;
+                width: 22px;
+                height: 22px;
             }
         }
         
@@ -341,7 +344,6 @@
                 <svg viewBox="0 0 24 24" fill="currentColor">
                     <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
                 </svg>
-                Go Fullscreen
             </button>
         </div>
     </div>
@@ -477,7 +479,6 @@
                     <svg viewBox="0 0 24 24" fill="currentColor">
                         <path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/>
                     </svg>
-                    Exit Fullscreen
                 `;
                 status.textContent = 'Fullscreen active! Scroll now! 🎉';
             } else {
@@ -506,7 +507,6 @@
                     <svg viewBox="0 0 24 24" fill="currentColor">
                         <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
                     </svg>
-                    Go Fullscreen
                 `;
                 status.textContent = 'Ready to go fullscreen';
             }
