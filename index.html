@@ -258,8 +258,11 @@
         .container:fullscreen,
         .container:-webkit-full-screen,
         .container:-moz-full-screen {
-            overflow-y: auto;
-            overflow-x: hidden;
+            overflow-y: scroll !important;
+            overflow-x: hidden !important;
+            -webkit-overflow-scrolling: touch !important;
+            height: 100vh !important;
+            width: 100vw !important;
         }
         
         /* Scroll indicator */
@@ -491,10 +494,31 @@
         }
         
         // Event listeners
-        document.addEventListener('fullscreenchange', updateButton);
-        document.addEventListener('webkitfullscreenchange', updateButton);
-        document.addEventListener('mozfullscreenchange', updateButton);
-        document.addEventListener('MSFullscreenChange', updateButton);
+        document.addEventListener('fullscreenchange', function() {
+            updateButton();
+            setupScrollListener();
+        });
+        document.addEventListener('webkitfullscreenchange', function() {
+            updateButton();
+            setupScrollListener();
+        });
+        document.addEventListener('mozfullscreenchange', function() {
+            updateButton();
+            setupScrollListener();
+        });
+        document.addEventListener('MSFullscreenChange', function() {
+            updateButton();
+            setupScrollListener();
+        });
+        
+        function setupScrollListener() {
+            const container = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement;
+            if (container) {
+                container.addEventListener('scroll', updateProgressBar);
+            } else {
+                window.addEventListener('scroll', updateProgressBar);
+            }
+        }
         
         window.addEventListener('scroll', updateProgressBar);
         document.querySelector('.container').addEventListener('scroll', updateProgressBar);
